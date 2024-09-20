@@ -11,7 +11,62 @@ export default defineConfig({
     vue(),
     vueDevTools(),
     VitePWA({
-      registerType: 'autoUpdate'
+      registerType: 'autoUpdate',
+      injectRegister: false,
+
+      pwaAssets: {
+        disabled: false,
+        config: true
+      },
+
+      manifest: {
+        name: 'Smoothie !',
+        short_name: 'Smoothie',
+        description: 'A simple smoothie recipe app',
+        theme_color: '#ffffff',
+
+        icons: [
+          {
+            src: './public/logos/pwa-64x64.png',
+            sizes: '64x64',
+            type: 'image/png'
+          },
+          {
+            src: './public/logos/pwa-192x192.png',
+            sizes: '192x192',
+            type: 'image/png'
+          },
+          {
+            src: './public/logos/pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png'
+          },
+          {
+            src: './public/logos/maskable-icon-pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable'
+          },
+          {
+            src: './public/apple-touch-icon-180x180.png',
+            sizes: '180x180',
+            type: 'image/png'
+          }
+        ]
+      },
+
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,png,jpg,svg,json,ico}'],
+        cleanupOutdatedCaches: true,
+        clientsClaim: true
+      },
+
+      devOptions: {
+        enabled: false,
+        navigateFallback: 'index.html',
+        suppressWarnings: true,
+        type: 'module'
+      }
     })
   ],
   resolve: {
