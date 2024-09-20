@@ -14,11 +14,6 @@ export default defineConfig({
       registerType: 'autoUpdate',
       injectRegister: false,
 
-      pwaAssets: {
-        disabled: false,
-        config: true
-      },
-
       manifest: {
         name: 'Smoothie !',
         short_name: 'Smoothie',
@@ -42,10 +37,10 @@ export default defineConfig({
             type: 'image/png'
           },
           {
-            src: './public/logos/maskable-icon-pwa-512x512.png',
+            src: './public/logos/pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png',
-            purpose: 'maskable'
+            purpose: 'any maskable'
           },
           {
             src: './public/apple-touch-icon-180x180.png',
