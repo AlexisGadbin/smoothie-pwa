@@ -1,5 +1,5 @@
 <script setup lang="ts"></script>
 
 <template>
-  <main>toto</main>
+  <main>Ca fonctionne !!</main>
 </template>
