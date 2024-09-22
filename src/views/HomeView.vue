@@ -1,5 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import RegisterView from './onboarding/RegisterView.vue'
+</script>
 
 <template>
-  <main>Ca fonctionne !!</main>
+  <main>
+    <RegisterView />
+  </main>
 </template>

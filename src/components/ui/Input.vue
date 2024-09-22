@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { defineEmits, defineProps } from 'vue'
-
 const props = defineProps<{
   modelValue: string | number
   type?: 'text' | 'number' | 'email' | 'password' | 'date'
