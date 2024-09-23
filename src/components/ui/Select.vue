@@ -3,12 +3,12 @@ import { defineProps } from 'vue'
 
 const props = defineProps<{
   class?: string
-  modelValue: string
+  modelValue: any
   placeholder?: string
 }>()
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void
+  (e: 'update:modelValue', value: typeof props.modelValue): void
 }>()
 
 const updateValue = (event: Event) => {
@@ -24,7 +24,7 @@ const updateValue = (event: Event) => {
       'w-full p-2 text-xs focus:border-primary-700 bg-white rounded flex items-center justify-start gap-2 border border-primary-100',
       props.class
     ]"
-    @input="updateValue"
+    @change="updateValue"
   >
     <slot />
   </select>

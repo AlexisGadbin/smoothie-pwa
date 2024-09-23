@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 const props = defineProps<{
-  modelValue: string | number
+  modelValue: string | number | null
   type?: 'text' | 'number' | 'email' | 'password' | 'date'
   placeholder?: string
   class?: string
