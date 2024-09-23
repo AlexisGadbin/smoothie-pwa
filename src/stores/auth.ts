@@ -8,7 +8,7 @@ export const useAuthStore = defineStore('auth', () => {
   const token = ref(localStorage.getItem('token'))
 
   async function api(method: string, url: string, payload: any = {}) {
-    const response = await fetch('http://localhost:3333/api' + url, {
+    const response = await fetch(import.meta.env.VITE_API_URL + url, {
       method,
       headers: {
         'Content-Type': 'application/json',

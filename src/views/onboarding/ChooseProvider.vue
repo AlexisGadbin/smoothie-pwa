@@ -39,7 +39,6 @@ const handleSubmit = async () => {
       await auth.login(onboarding.email, password.value)
       router.push({ name: 'home' })
     } catch (e) {
-      console.log('toto')
       loginError.value = "L'e-mail ou le mot de passe est incorrect"
     }
 
