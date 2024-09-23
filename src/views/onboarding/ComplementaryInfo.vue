@@ -17,7 +17,7 @@ const error = ref<string | null>(null)
 
 const handleSubmit = async () => {
   await auth.register(onboarding.getRegisterData())
-
+  onboarding.resetOnboarding()
   router.push({ name: 'home' })
 }
 </script>

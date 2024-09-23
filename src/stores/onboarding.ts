@@ -41,6 +41,17 @@ export const useOnboardingStore = defineStore('onboarding', () => {
     }
   }
 
+  function resetOnboarding() {
+    email.value = ''
+    password.value = ''
+    confirmPassword.value = ''
+    step.value = 0
+    firstName.value = ''
+    lastName.value = ''
+    gender.value = GenderEnum.Unspecified
+    dateOfBirth.value = new Date().toISOString().split('T')[0]
+  }
+
   return {
     email,
     password,
@@ -52,6 +63,7 @@ export const useOnboardingStore = defineStore('onboarding', () => {
     dateOfBirth,
     nextStep,
     previousStep,
-    getRegisterData
+    getRegisterData,
+    resetOnboarding
   }
 })
