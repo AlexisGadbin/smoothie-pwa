@@ -15,10 +15,16 @@ auth
   .catch(() => {
     router.push({ name: 'onboarding' })
   })
+
+const logout = async () => {
+  await auth.logout()
+  router.push({ name: 'onboarding' })
+}
 </script>
 
 <template>
   <main>
     <div v-if="auth.user">Coucou {{ auth.user.firstName }}</div>
+    <button @click="logout">Logout</button>
   </main>
 </template>
