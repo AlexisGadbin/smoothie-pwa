@@ -16,7 +16,6 @@ const router = useRouter()
 const error = ref<string | null>(null)
 
 const handleSubmit = async () => {
-  console.log(onboarding)
   await auth.register(onboarding.getRegisterData())
 
   router.push({ name: 'home' })
@@ -36,8 +35,8 @@ const handleSubmit = async () => {
     </p>
 
     <form class="mt-9 flex flex-col gap-4" @submit.prevent="handleSubmit">
-      <div class="flex gap-4 w-full">
-        <div>
+      <div class="flex gap-4 w-full justify-between">
+        <div class="flex-1">
           <Label for="lastName">
             Nom
             <RequiredStar />
@@ -49,7 +48,7 @@ const handleSubmit = async () => {
             required
           />
         </div>
-        <div>
+        <div class="flex-1">
           <Label for="firstName">
             Prénom
             <RequiredStar />
@@ -73,12 +72,7 @@ const handleSubmit = async () => {
       </div>
       <div>
         <Label for="birthDate">Date de naissance</Label>
-        <Input
-          type="date"
-          v-model="onboarding.dateOfBirth"
-          placeholder="Sélectionnez un genre"
-          id="birthDate"
-        />
+        <Input type="date" v-model="onboarding.dateOfBirth" id="birthDate" />
       </div>
       <Button type="submit" class="w-full">Compléter mon inscription !</Button>
     </form>

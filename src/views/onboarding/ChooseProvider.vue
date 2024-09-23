@@ -5,13 +5,26 @@ import GoogleLogo from '@/assets/icons/GoogleLogo.vue'
 import AppTitle from '@/components/AppTitle.vue'
 import Button from '@/components/ui/Button.vue'
 import Input from '@/components/ui/Input.vue'
+import { useAuthStore } from '@/stores/auth'
 import { useOnboardingStore } from '@/stores/onboarding'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
+const auth = useAuthStore()
+const router = useRouter()
 const onboarding = useOnboardingStore()
 const error = ref<string | null>(null)
+const loginError = ref<string | null>(null)
+const password = ref('')
+const isLoggingIn = ref(false)
 
-const handleSubmit = () => {
+auth.me().then(() => {
+  if (auth.user) {
+    router.push({ name: 'home' })
+  }
+})
+
+const handleSubmit = async () => {
   if (!onboarding.email) {
     error.value = 'Veuillez renseigner votre e-mail'
     return
@@ -20,6 +33,26 @@ const handleSubmit = () => {
     error.value = 'Veuillez renseigner un e-mail valide'
     return
   }
+
+  if (isLoggingIn.value) {
+    try {
+      await auth.login(onboarding.email, password.value)
+      router.push({ name: 'home' })
+    } catch (e) {
+      console.log('toto')
+      loginError.value = "L'e-mail ou le mot de passe est incorrect"
+    }
+
+    return
+  }
+
+  const existingUser = await auth.api('GET', '/users/' + onboarding.email)
+
+  if (existingUser.user) {
+    isLoggingIn.value = true
+    return
+  }
+
   onboarding.nextStep()
 }
 </script>
@@ -39,7 +72,14 @@ const handleSubmit = () => {
     <form class="mt-9 flex flex-col gap-4" @submit.prevent="handleSubmit">
       <Input v-model="onboarding.email" placeholder="Entrez votre e-mail" />
       <p v-if="error" class="text-red-500 text-xs">{{ error }}</p>
+      <Input
+        v-if="isLoggingIn"
+        v-model="password"
+        placeholder="Entrez votre mot de passe"
+        type="password"
+      />
       <Button type="submit" class="w-full">Se connecter avec un e-mail</Button>
+      <p v-if="loginError" class="text-red-500 text-xs">{{ loginError }}</p>
       <div class="flex items-center w-full text-gray-500 gap-2 text-xs">
         <div class="border-t border-gray-500 w-full" />
         Ou

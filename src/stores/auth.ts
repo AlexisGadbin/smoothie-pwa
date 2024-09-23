@@ -17,6 +17,10 @@ export const useAuthStore = defineStore('auth', () => {
       body: method !== 'GET' ? JSON.stringify(unref(payload)) : null
     })
 
+    if (!response.ok) {
+      throw new Error('Unhandled error')
+    }
+
     return response.json()
   }
 
@@ -45,12 +49,10 @@ export const useAuthStore = defineStore('auth', () => {
   async function me() {
     const result = await api('GET', '/auth/me')
 
-    console.log(user)
-
     user.value = result.user
 
     return user.value
   }
 
-  return { user, login, register, logout, me }
+  return { user, login, register, logout, me, api }
 })

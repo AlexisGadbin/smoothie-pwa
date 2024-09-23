@@ -8,3 +8,8 @@ body {
   @apply bg-gray-50;
   @apply font-noto;
 }
+
+select {
+  -webkit-appearance: initial;
+  appearance: initial;
+}

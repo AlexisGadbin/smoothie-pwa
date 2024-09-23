@@ -20,8 +20,7 @@ export const useOnboardingStore = defineStore('onboarding', () => {
   const firstName = ref('')
   const lastName = ref('')
   const gender = ref<Gender>(GenderEnum.Unspecified)
-  const dateOfBirth = ref<string | null>(null)
-
+  const dateOfBirth = ref<string | null>(new Date().toISOString().split('T')[0])
   function nextStep() {
     step.value++
   }

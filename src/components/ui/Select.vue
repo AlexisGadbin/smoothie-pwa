@@ -21,7 +21,7 @@ const updateValue = (event: Event) => {
   <select
     :value="props.modelValue"
     :class="[
-      'w-full p-2 text-xs focus:border-primary-700 bg-white rounded flex items-center justify-start gap-2 border border-primary-100',
+      'w-full p-2 text-xs outline-none focus:border-primary-700 bg-white rounded flex items-center justify-start gap-2 border border-primary-100',
       props.class
     ]"
     @change="updateValue"
