@@ -33,7 +33,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <main class="mx-4 h-full overflow-y-auto">
+  <main class="mx-4 h-full">
     <div class="flex items-center mt-4 mb-6">
       <AppTitle />
     </div>
