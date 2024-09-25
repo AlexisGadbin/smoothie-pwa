@@ -22,12 +22,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex w-full bg-primary-800 rounded-[20px] p-5 relative">
+  <div v-if="smoothie" class="flex w-full bg-primary-800 rounded-[20px] p-5 relative">
     <div class="w-2/3 max-w-2/3 flex flex-col gap-4">
       <h2 class="text-white text-xl font-bold">
-        {{ smoothie?.name }}
+        {{ smoothie.name }}
       </h2>
-      <div class="flex gap-4" v-if="smoothie">
+      <div class="flex gap-4">
         <CategoryBadge
           v-for="category in smoothie.categories"
           v-bind:key="'category-' + category.id"
@@ -36,7 +36,7 @@ onMounted(() => {
       </div>
     </div>
     <div class="w-1/3 max-w-1/3">
-      <SmoothiePicture color="FFFFFF" class="w-[100px] h-full absolute -bottom-1" />
+      <SmoothiePicture :color="smoothie.color" class="w-[100px] h-full absolute -bottom-1" />
     </div>
   </div>
 </template>

@@ -8,4 +8,5 @@ export type Smoothie = {
   categories: Category[]
   ingredients: Ingredient[]
   author: UserType
+  color: string
 }

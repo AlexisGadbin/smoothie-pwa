@@ -14,8 +14,10 @@
     "generate-pwa-assets": "pwa-assets-generator --preset minimal-2023 public/logos/logo.png"
   },
   "dependencies": {
+    "@types/tinycolor2": "^1.4.6",
     "lucide-vue-next": "^0.446.0",
     "pinia": "^2.1.7",
+    "tinycolor2": "^1.6.0",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3"
   },
