@@ -12,7 +12,6 @@ onMounted(() => {
   auth
     .api('GET', '/smoothie/day')
     .then((data: Smoothie) => {
-      console.log(data)
       smoothie.value = data
     })
     .catch(() => {
