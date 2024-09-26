@@ -33,8 +33,6 @@ const props = defineProps<{
   smoothie: Smoothie
 }>()
 
-console.log(props.smoothie)
-
 const backgroundColor = computed(() => {
   return tinycolor(props.smoothie.color).setAlpha(0.3).toRgbString()
 })

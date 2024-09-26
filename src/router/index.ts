@@ -13,6 +13,16 @@ const router = createRouter({
       path: '/',
       name: 'onboarding',
       component: () => import('../views/onboarding/Onboarding.vue')
+    },
+    {
+      path: '/create-smoothie',
+      name: 'create-smoothie',
+      component: () => import('../views/create-smoothie/CreateSmoothie.vue')
+    },
+    {
+      path: '/create-smoothie/ingredient',
+      name: 'add-ingredient',
+      component: () => import('../views/create-smoothie/AddIngredient.vue')
     }
   ]
 })

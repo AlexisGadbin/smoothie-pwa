@@ -20,6 +20,12 @@ export default {
           900: '#3A2986',
           950: '#23184E'
         }
+      },
+      height: {
+        tabbar: '64px'
+      },
+      padding: {
+        tabbar: '20px'
       }
     }
   },

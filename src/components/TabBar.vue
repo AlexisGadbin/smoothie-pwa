@@ -4,7 +4,9 @@ import TabBarItem from './TabBarItem.vue'
 </script>
 
 <template>
-  <nav class="fixed bottom-0 left-0 right-0 bg-white flex justify-around items-center h-16 pb-5">
+  <nav
+    class="fixed bottom-0 left-0 right-0 bg-white flex justify-around items-center h-tabbar pb-tabbar"
+  >
     <TabBarItem link="/home">
       <Home :size="24" />
       <span class="text-xs">Smoothies</span>
