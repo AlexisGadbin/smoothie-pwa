@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
+import { RouterView, useRoute } from 'vue-router'
 import ReloadPrompt from './components/ReloadPrompt.vue'
 import TabBar from './components/TabBar.vue'
+
+const route = useRoute()
 </script>
 
 <template>
   <ReloadPrompt />
 
   <RouterView />
-  <TabBar />
+  <TabBar v-if="route.name !== 'onboarding'" />
 </template>
