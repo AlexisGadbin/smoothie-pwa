@@ -60,7 +60,7 @@ function close() {
 <template>
   <div
     v-if="needRefresh"
-    class="fixed bg-white shadow-md bottom-0 p-4 m-6"
+    class="fixed bg-white shadow-md bottom-0 p-4 m-6 z-50"
     aria-labelledby="toast-message"
     role="alert"
   >
