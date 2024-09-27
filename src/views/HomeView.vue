@@ -46,7 +46,9 @@ onMounted(async () => {
     </div>
     <SmoothieOfTheDay />
     <div class="my-4 flex gap-2 w-full">
+      <CategoryBadge :showText="true" category="all" />
       <CategoryBadge
+        :showText="true"
         v-for="category in categories"
         :key="'category-' + category.id"
         :category="category"
