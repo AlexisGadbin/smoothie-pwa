@@ -52,6 +52,7 @@ const handleCreateSmoothie = async () => {
     ingredients: createSmoothie.ingredients
   })
 
+  createSmoothie.resetSmoothie()
   router.push({ name: 'home' })
 }
 </script>
