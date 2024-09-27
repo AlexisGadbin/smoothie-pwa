@@ -5,4 +5,8 @@ export type Ingredient = {
   name: string
   category: IngredientCategory
   imageUrl: string
+  calories: number
+  carbs: number
+  protein: number
+  fat: number
 }

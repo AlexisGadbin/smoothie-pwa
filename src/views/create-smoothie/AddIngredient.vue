@@ -11,6 +11,24 @@
       {{ createSmoothie.chosenIngredients?.name }}
     </div>
     <div class="mt-2 mx-4 flex flex-col gap-2">
+      <div class="flex justify-between py-2">
+        <div class="text-center">
+          <p class="font-bold text-sm">{{ createSmoothie.chosenIngredients?.calories }} kcal</p>
+          <p class="text-xs font-light">Calories</p>
+        </div>
+        <div class="text-center">
+          <p class="font-bold text-sm">{{ createSmoothie.chosenIngredients?.carbs }} g</p>
+          <p class="text-xs font-light">Glucides</p>
+        </div>
+        <div class="text-center">
+          <p class="font-bold text-sm">{{ createSmoothie.chosenIngredients?.protein }} g</p>
+          <p class="text-xs font-light">Protéines</p>
+        </div>
+        <div class="text-center">
+          <p class="font-bold text-sm">{{ createSmoothie.chosenIngredients?.fat }} g</p>
+          <p class="text-xs font-light">Lipides</p>
+        </div>
+      </div>
       <div class="flex gap-5">
         <Input v-model="quantity" type="number" placeholder="Quantité" class="w-[40%]" />
         <Select v-model="unit" class="w-full">
