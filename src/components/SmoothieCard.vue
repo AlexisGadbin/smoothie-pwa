@@ -8,7 +8,7 @@
     </div>
     <div class="p-2 pt-1">
       <p class="text-primary-700 text-xs font-semibold">A compléter</p>
-      <h3 class="font-semibold text-sm">
+      <h3 class="font-semibold text-sm truncate">
         {{ smoothie.name }}
       </h3>
       <div class="mt-3 text-gray-500 font-light text-[10px] flex justify-between items-center">
