@@ -32,6 +32,11 @@ onMounted(() => {
           v-bind:key="'category-' + category.id"
           :category="category"
         />
+        <div
+          v-for="index in 3 - smoothie.categories.length"
+          :key="'empty-round-' + index"
+          class="rounded-full bg-white/80 h-10 w-10"
+        ></div>
       </div>
     </div>
     <div class="w-1/3 max-w-1/3">
