@@ -1,20 +1,27 @@
 <template>
-  <main class="mx-4 h-full">
+  <main class="mx-4 h-full relative">
     <div class="flex justify-between items-center mt-4 mb-6">
       <AppTitle />
     </div>
     <Input v-model="search" placeholder="Entre le nom d'un ingrédient pour le trouver !" />
     <FruitGrid />
-    <div class="mt-5">
-      <h2 class="text-primary-700 text-sm">Ton smoothie :</h2>
-      {{ createSmoothie.ingredients.map((ingredient) => ingredient.name).join(', ') }}
+    <div class="flex relative gap-6">
+      <div class="w-3/5">
+        <div class="mt-5">
+          <h2 class="text-primary-700 text-sm">Ton smoothie :</h2>
+          <p class="text-sm">
+            {{ createSmoothie.ingredients.map((ingredient) => ingredient.name).join(', ') }}
+          </p>
+        </div>
+        <Input v-model="createSmoothie.name" placeholder="Donne lui un nom !" class="mt-4" />
+        <p v-if="error" class="text-red-500 text-xs">{{ error }}</p>
+      </div>
+      <SmoothiePicture
+        :color="createSmoothie.color"
+        class="w-[30%] h-auto absolute bottom-0 right-0 max-w-[125px]"
+      />
     </div>
-    <Input
-      v-model="createSmoothie.name"
-      placeholder="Comment s'appelle ton smoothie ?"
-      class="mt-4"
-    />
-    <p v-if="error" class="text-red-500 text-xs">{{ error }}</p>
+
     <Button @click="handleCreateSmoothie" class="mt-4"> Créer mon smoothie ! </Button>
   </main>
 </template>
@@ -22,6 +29,7 @@
 <script lang="ts" setup>
 import AppTitle from '@/components/AppTitle.vue'
 import FruitGrid from '@/components/FruitGrid.vue'
+import SmoothiePicture from '@/components/SmoothiePicture.vue'
 import Button from '@/components/ui/Button.vue'
 import Input from '@/components/ui/Input.vue'
 import { useAuthStore } from '@/stores/auth'
@@ -49,6 +57,7 @@ const handleCreateSmoothie = async () => {
 
   await auth.api('POST', '/smoothie', {
     name: createSmoothie.name,
+    color: createSmoothie.color,
     ingredients: createSmoothie.ingredients
   })
 

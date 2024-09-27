@@ -1,10 +1,13 @@
 import type { Ingredient } from '@/utils/types/Ingredient'
 import type { Unit } from '@/utils/types/Unit'
+import ColorThief from 'colorthief'
 import { defineStore } from 'pinia'
+import tinycolor from 'tinycolor2'
 import { ref } from 'vue'
 
 export const useCreateSmoothieStore = defineStore('createSmoothie', () => {
   const name = ref('')
+  const color = ref('')
   const ingredients = ref<
     {
       ingredientId: number
@@ -25,6 +28,8 @@ export const useCreateSmoothieStore = defineStore('createSmoothie', () => {
       quantity: quantity,
       unit: unit
     })
+
+    addColorToSmoothie()
   }
 
   function removeIngredient(ingredientId: number) {
@@ -46,9 +51,32 @@ export const useCreateSmoothieStore = defineStore('createSmoothie', () => {
     chosenIngredients.value = null
   }
 
+  const addColorToSmoothie = () => {
+    if (!chosenIngredients.value) return
+
+    const img = new Image()
+    img.src = '/ingredients/' + chosenIngredients.value.imageUrl
+
+    img.onload = () => {
+      const colorThief = new ColorThief()
+      const dominantColor = colorThief.getColor(img)
+      const dominangColorHex = tinycolor(
+        `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`
+      ).toHexString()
+      if (!dominantColor) return
+      if (!color.value) {
+        color.value = dominangColorHex
+      } else {
+        const newColor = tinycolor.mix(color.value, dominangColorHex)
+        color.value = newColor.toHexString()
+      }
+    }
+  }
+
   return {
     name,
     ingredients,
+    color,
     chosenIngredients,
     addIngredient,
     removeIngredient,
