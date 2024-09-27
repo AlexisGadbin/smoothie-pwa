@@ -52,7 +52,7 @@ onMounted(async () => {
         :category="category"
       />
     </div>
-    <section class="h-full flex flex-wrap gap-6 justify-center overflow-y-auto">
+    <section class="h-full flex flex-wrap gap-6 overflow-y-auto justify-between">
       <SmoothieCard
         v-for="smoothie in smoothies"
         :key="'smoothie-' + smoothie.id"

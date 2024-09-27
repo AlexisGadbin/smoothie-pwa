@@ -27,11 +27,13 @@ import Input from '@/components/ui/Input.vue'
 import { useAuthStore } from '@/stores/auth'
 import { useCreateSmoothieStore } from '@/stores/createSmoothie'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const search = ref('')
 
 const createSmoothie = useCreateSmoothieStore()
 const auth = useAuthStore()
+const router = useRouter()
 const error = ref<string | null>(null)
 
 const handleCreateSmoothie = async () => {
@@ -49,5 +51,7 @@ const handleCreateSmoothie = async () => {
     name: createSmoothie.name,
     ingredients: createSmoothie.ingredients
   })
+
+  router.push({ name: 'home' })
 }
 </script>
