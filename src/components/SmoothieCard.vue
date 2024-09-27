@@ -3,7 +3,7 @@
     <div class="h-[130px] relative" :style="{ backgroundColor }">
       <SmoothiePicture
         :color="smoothie.color"
-        class="w-[80px] h-fit absolute -bottom-1 right-1/2 transform translate-x-1/2"
+        class="w-[80px] h-auto absolute -bottom-1 right-1/2 transform translate-x-1/2"
       />
     </div>
     <div class="p-2 pt-1">
