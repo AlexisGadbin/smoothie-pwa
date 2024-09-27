@@ -12,12 +12,16 @@
           <p class="text-sm">
             {{ createSmoothie.ingredients.map((ingredient) => ingredient.name).join(', ') }}
           </p>
+          <p class="text-sm" v-if="createSmoothie.ingredients.length === 0">
+            Ton smoothie n'a pas encore d'ingrédients !
+          </p>
         </div>
         <Input v-model="createSmoothie.name" placeholder="Donne lui un nom !" class="mt-4" />
         <p v-if="error" class="text-red-500 text-xs">{{ error }}</p>
       </div>
       <SmoothiePicture
         :color="createSmoothie.color"
+        v-if="createSmoothie.ingredients.length > 0"
         class="w-[30%] h-auto absolute bottom-0 right-0 max-w-[125px]"
       />
     </div>
@@ -34,7 +38,7 @@ import Button from '@/components/ui/Button.vue'
 import Input from '@/components/ui/Input.vue'
 import { useAuthStore } from '@/stores/auth'
 import { useCreateSmoothieStore } from '@/stores/createSmoothie'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
 const search = ref('')
@@ -43,6 +47,15 @@ const createSmoothie = useCreateSmoothieStore()
 const auth = useAuthStore()
 const router = useRouter()
 const error = ref<string | null>(null)
+const watchedColor = ref<string | null>(null)
+
+watch(
+  () => createSmoothie.color,
+  (color) => {
+    if (watchedColor.value === color) return
+    watchedColor.value = color
+  }
+)
 
 const handleCreateSmoothie = async () => {
   if (!createSmoothie.name) {

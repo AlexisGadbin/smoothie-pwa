@@ -340,7 +340,7 @@ const circularBorderColor = ref('#F7F7F7')
 const bubbleColor3 = ref('#FFFFFF')
 
 // Colors that are calculated
-const liquidColorInternal = ref(props.color)
+const liquidColorInternal = computed(() => props.color)
 const liquidColorExternal = computed(() => adjustBrightness(liquidColorInternal.value, -10))
 const bubbleColor1 = computed(() => lightenColor(liquidColorInternal.value, 30))
 const bubbleColor2 = computed(() => adjustSaturation(liquidColorInternal.value, 50))

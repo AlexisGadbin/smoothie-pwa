@@ -60,14 +60,14 @@ export const useCreateSmoothieStore = defineStore('createSmoothie', () => {
     img.onload = () => {
       const colorThief = new ColorThief()
       const dominantColor = colorThief.getColor(img)
-      const dominangColorHex = tinycolor(
+      const dominantColorHex = tinycolor(
         `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`
       ).toHexString()
       if (!dominantColor) return
       if (!color.value) {
-        color.value = dominangColorHex
+        color.value = dominantColorHex
       } else {
-        const newColor = tinycolor.mix(color.value, dominangColorHex)
+        const newColor = tinycolor.mix(color.value, dominantColorHex)
         color.value = newColor.toHexString()
       }
     }
