@@ -15,6 +15,9 @@ const router = useRouter()
 const createSmoothie = useCreateSmoothieStore()
 
 const handleClick = () => {
+  if (createSmoothie.ingredients.some((i) => i.ingredientId === props.ingredient.id)) {
+    return
+  }
   createSmoothie.setChosenIngredients(props.ingredient)
   router.push({ name: 'add-ingredient' })
 }
