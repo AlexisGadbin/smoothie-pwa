@@ -1,10 +1,6 @@
 <template>
   <button type="button" class="bg-primary-50 rounded-[20px]" @click="handleClick">
-    <img
-      :src="'/src/assets/ingredients/' + ingredient.imageUrl"
-      :alt="ingredient.name"
-      class="w-16 h-16"
-    />
+    <img :src="'/ingredients/' + ingredient.imageUrl" :alt="ingredient.name" class="w-16 h-16" />
   </button>
 </template>
 
