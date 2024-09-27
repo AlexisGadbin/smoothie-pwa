@@ -61,7 +61,9 @@ export default defineConfig({
         navigateFallback: 'index.html',
         suppressWarnings: true,
         type: 'module'
-      }
+      },
+
+      includeAssets: ['ingredients/*.png']
     })
   ],
   resolve: {
