@@ -23,6 +23,11 @@ const router = createRouter({
       path: '/create-smoothie/ingredient',
       name: 'add-ingredient',
       component: () => import('../views/create-smoothie/AddIngredient.vue')
+    },
+    {
+      path: '/smoothie/:id',
+      name: 'smoothie',
+      component: () => import('../views/SmoothieDetail.vue')
     }
   ]
 })

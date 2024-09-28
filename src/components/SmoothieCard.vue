@@ -1,5 +1,9 @@
 <template>
-  <div class="bg-white overflow-hidden rounded-2xl w-[45%] h-[210px]">
+  <button
+    type="button"
+    class="bg-white overflow-hidden rounded-2xl w-[45%] h-[210px]"
+    @click="handleClick"
+  >
     <div class="h-[130px] relative" :style="{ backgroundColor }">
       <SmoothiePicture
         :color="smoothie.color"
@@ -19,7 +23,7 @@
         <Heart :size="20" />
       </div>
     </div>
-  </div>
+  </button>
 </template>
 
 <script lang="ts" setup>
@@ -27,13 +31,20 @@ import type { Smoothie } from '@/utils/types/Smoothie'
 import { Heart, ShoppingBasket } from 'lucide-vue-next'
 import tinycolor from 'tinycolor2'
 import { computed } from 'vue'
+import { useRouter } from 'vue-router'
 import SmoothiePicture from './SmoothiePicture.vue'
 
 const props = defineProps<{
   smoothie: Smoothie
 }>()
 
+const router = useRouter()
+
 const backgroundColor = computed(() => {
   return tinycolor(props.smoothie.color).setAlpha(0.3).toRgbString()
 })
+
+const handleClick = () => {
+  router.push(`/smoothie/${props.smoothie.id}`)
+}
 </script>

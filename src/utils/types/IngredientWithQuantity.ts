@@ -8,4 +8,8 @@ export type IngredientWithQuantity = {
   imageUrl: string
   quantity: number
   unit: Unit
+  calories: number
+  carbs: number
+  protein: number
+  fat: number
 }

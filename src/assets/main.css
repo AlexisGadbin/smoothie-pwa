@@ -13,3 +13,7 @@ select {
   -webkit-appearance: initial;
   appearance: initial;
 }
+
+li::marker {
+  @apply text-primary-500;
+}

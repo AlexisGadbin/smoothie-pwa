@@ -26,6 +26,9 @@ export default {
       },
       padding: {
         tabbar: '20px'
+      },
+      spacing: {
+        tabbar: '64px'
       }
     }
   },
